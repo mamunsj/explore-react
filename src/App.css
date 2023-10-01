@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.counter button {
+  padding: 10px;
+  font-weight: bold;
+  background-color: rgb(231, 231, 241);
+  border: none;
+  box-shadow: 2px 2px 12px rgb(26, 3, 3);
+  margin-left: 10px;
+  text-transform: capitalize;
+  color: darkblue;
+  cursor: pointer;
+  border-radius: 2px;
+}
