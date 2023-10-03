@@ -36,9 +36,9 @@
     transform: rotate(360deg);
   }
 }
-
-.counter button {
-  padding: 10px;
+button {
+  padding: 20px 30px;
+  font-size: 16px;
   font-weight: bold;
   background-color: rgb(231, 231, 241);
   border: none;
@@ -48,4 +48,14 @@
   color: darkblue;
   cursor: pointer;
   border-radius: 2px;
+}
+
+.item {
+  margin-bottom: 40px;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  background: rgb(101, 134, 120);
+  border-radius: 4px;
+  box-shadow: 3px 4px 39px rgba(30, 8, 53, 0.411);
 }

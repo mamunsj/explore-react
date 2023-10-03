@@ -47,20 +47,58 @@
 //   );
 // }
 
+// import { useState, useEffect } from "react";
+// export default function WindowResize() {
+//   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+//   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+//   const handlaResize = () => {
+//     setWindowWidth(window.innerWidth);
+//     setWindowHeight(window.innerHeight);
+//   };
+//   useEffect(() => {
+//     window.addEventListener("resize", handlaResize);
+//   }, []);
+//   return (
+//     <div>
+//       {windowWidth} {windowHeight}
+//     </div>
+//   );
+// }
+
 import { useState, useEffect } from "react";
 export default function WindowResize() {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-  const handlaResize = () => {
-    setWindowWidth(window.innerWidth);
-    setWindowHeight(window.innerHeight);
-  };
+  const [contentType, setContentType] = useState("posts");
+  const [items, setItems] = useState([]);
+
   useEffect(() => {
-    window.addEventListener("resize", handlaResize);
-  }, []);
+    fetch(`https://jsonplaceholder.typicode.com/${contentType}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setItems(data);
+        console.log(items);
+      });
+  }, [contentType]);
   return (
-    <div>
-      {windowWidth} {windowHeight}
+    <div className="data">
+      <button onClick={() => setContentType("Posts")}>Posts</button>
+      <button onClick={() => setContentType("Users")}>Users</button>
+      <button onClick={() => setContentType("Comments")}>Comments</button>
+      <button onClick={() => setContentType("Photos")}>Photos</button>
+      <h2>{contentType}</h2>
+
+      {items.map((item) => {
+        return (
+          <div className="item">
+            <p> Id: {item.id}</p>
+            <p> Email: {item.email}</p>
+            <p> Body : {item.body}</p>
+            <p> Name : {item.name}</p>
+            <p> url: {item.url}</p>
+            <p> Title: {item.title}</p>
+            <p> AlbumId: {item.albumId}</p>
+          </div>
+        );
+      })}
     </div>
   );
 }
